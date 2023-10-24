@@ -1,0 +1,98 @@
+Java API Assessment - Deadline 19th November 2023
+
+Sustainability API based around 17 UN sustainability development goals (SDG).
+
+Food Bank covers a number of SDG's goals as they address food security, food waste, nutrition, inequality and ending hunger
+⦁	Zero Hunger - Combatted by access to food for people facing hunger due to poverty.
+⦁	Good Health and Well Being - Impoved due to  access to nutritious food.
+⦁	Reduced Inequality - food assistance provided regardless of socio-economic status.
+⦁	Sustainable Cities and Communities - contributes to reduction of food waste and addresses food security issues, helps build more sustainable community.
+⦁	Life on Land - Redirects surplus food from going to waste.
+
+As a food bank volunteer, I've closely observed the processes and noted that a significant number of food bank recipients often leave at least a quarter of their food package untouched. This can be attributed to a couple of key factors:
+⦁	Cultural Food Differences: Some recipients are less familiar with the types of food provided by the food bank. The items in the standard food package might not align with their cultural preferences or traditional diets, making them less likely to consume certain items.
+⦁	Preference for Fresh Food: Many recipients have a preference for fresh produce over canned or packaged goods. They might prioritize fresh fruits, vegetables, and perishable items, which may not always be readily available in food bank distributions.
+Understanding these factors is crucial for tailoring food bank offerings to better meet the diverse needs and preferences of recipients, thereby reducing food waste and ensuring that donated items are utilised effectively.
+There is no guarantee that can satisfy the preference for fresh food, therefore i have decided to focus on creating a recipe finder API, this can help food bank recipients use available food resources effectively by providing recipes and meal ideas that use the ingredients typically distributed by food banks
+
+Recipes API
+A file-driven service that reads and serves detailed ingredients and cooking instructions
+● Endpoint: /recipes/{recipeName}
+● HTTP Method: GET
+● Description: Fetch a specific recipe's details.
+● Sample Response: {"name": "Spaghetti Bolognese", "ingredients": 
+["spaghetti", "minced beef", "tomatoes"], "method": "Boil spaghetti and 
+cook sauce..."}
+
+Project Outline
+1.	Clone Repo 
+2.	Install Dependencies 
+3.	Design API - based around sustainibility - 17 sustainable development goals
+4.	Include at least 1 algorithm (eg binary search, merge sort etc)
+5.	Unit test at least one class
+6.	Store data in JSON file
+7.	Implement exception handling
+8.	Evidence of Inheritance
+9.	Good use of HTTP protocols
+- methods
+- request and response 
+- have full CRUD operations supported
+10.	Document as you go along and README
+11.	Testing as you go along
+12.	Software Testing
+13.	Mentor Approval
+14.	Submission
+
+
+What is an API
+Application Programming Interface
+Connects apps together
+Data plugs into API
+
+
+How is an APi used?
+Why would you build an API?
+API developmemt using Java and Springboot?
+API algorithm
+What is JSon file?
+What are HTTP protocols?
+ - methods
+ - request
+ - response
+ - CRUD
+
+Dataflow
+Endpoint interactions
+Endpoint is point of contact where inputs are submitted
+
+API key - unique key to show who is accessing
+
+Define your primary endpoints:
+● Purpose: Understand each endpoint's core function.
+● Methods: Identify required HTTP methods (GET, POST, etc.).
+
+HTTP Methods. 
+Endpoint = digital location of a resource on the server. Always extend from base URL
+C.R.U.D
+Create = Post
+Read = Get
+Update = Put
+Delete = Delete
+1. GET Endpoint (Read) - /recipes
+Core Function: Retrieves a list of recipes. This endpoint is used to get a collection of available recipes, which can include details like the recipe name and a brief description.
+
+2. GET Endpoint with Parameters - /recipes/{recipeId}
+Core Function: Retrieves the details of a specific recipe. You provide the recipe's unique ID as a parameter in the URL, and the API responds with the full recipe, including its name, ingredients, and cooking instructions.
+
+3. POST Endpoint (Create) - /recipes
+Core Function: Allows the addition of new recipes. By sending a request with recipe data in the body (e.g., name, ingredients, instructions), you can create a new recipe within the system.
+
+4. PUT Endpoint (Update) - /recipes/{recipeId}
+Core Function: Updates the details of a specific recipe. By specifying a recipe's ID in the URL and sending updated recipe data in the request body, you can modify the recipe's information, such as adding or removing ingredients or changing cooking instructions.
+
+5. DELETE Endpoint (Delete) - /recipes/{recipeId}
+Core Function: Deletes a specific recipe. You specify the recipe's ID in the URL, and the API removes that recipe from the collection.
+
+6. Custom GET Endpoint - /recipes/search
+Core Function: Searches for recipes based on search criteria. You provide search parameters in the request (e.g., ingredients, keywords), and the API returns a list of recipes that match the specified criteria.
+The "Recipe Finder" API offers functionality for managing and retrieving recipe data. Users can search for recipes, view details of specific recipes, add new recipes, update existing recipes, and delete recipes. Understanding the core function of each endpoint is essential for effectively using the API to discover, create, and manage recipes.
