@@ -1,0 +1,35 @@
+Idea for Sustainability API
+Food Bank covers a number of SDG's goals as they address food security, food waste, nutrition, inequality and ending hunger
+⦁	Zero Hunger - Combatted by access to food for people facing hunger due to poverty.
+⦁	Good Health and Well Being - Impoved due to  access to nutritious food.
+⦁	Reduced Inequality - food assistance provided regardless of socio-economic status.
+⦁	Sustainable Cities and Communities - contributes to reduction of food waste and addresses food security issues, helps build more sustainable community.
+⦁	Life on Land - Redirects surplus food from going to waste.
+
+As a food bank volunteer, I've closely observed the processes and noted that a significant number of food bank recipients often leave at least a quarter of their food package untouched. This can be attributed to a couple of key factors:
+⦁	Cultural Food Differences: Some recipients are less familiar with the types of food provided by the food bank. The items in the standard food package might not align with their cultural preferences or traditional diets, making them less likely to consume certain items.
+⦁	Preference for Fresh Food: Many recipients have a preference for fresh produce over canned or packaged goods. They might prioritize fresh fruits, vegetables, and perishable items, which may not always be readily available in food bank distributions.
+⦁	Lack of access to essential cooking appliances and utensils: Variations in recipients' living situations can pose challenges and limit the ability to utilise or cook some of the ingredients provided. Alternatively some are not aware of alternative methods of cooking  canned and packeted foods.
+Understanding these factors is crucial for tailoring food bank offerings to better meet the diverse needs and preferences of recipients, thereby reducing food waste and ensuring that donated items are utilised effectively.
+There is no guarantee tthat can satisfy the preference for fresh food, therefore i have decided to focus on creating a recipe finder API, this can help food bank recipients use available food resources effectively by providing recipes and meal ideas that use the ingredients typically distributed by food banks
+
+ 
+
+How does this fall in line with meeting sustainbility goals?
+Food Waste and Sustainable Consumption: When recipients reject canned food, it can contribute to food waste. Food waste is a significant sustainability concern, as it impacts both the environment and food security. 
+Zero Hunger: One of the primary objectives of food banks is to alleviate hunger and food insecurity, which seeks to end hunger and ensure access to safe, nutritious, and sufficient food for all. Rejecting canned food may mean that some recipients remain food insecure, which goes against the goal of achieving zero hunger.
+Good Health and Well-being: Consuming a balanced diet that includes nutritious foods is essential for good health. Canned foods can provide essential nutrients. If recipients reject these foods, it may have implications for their health and well-being.
+Reducing Inequalities: Rejected canned food may disproportionately affect vulnerable populations, exacerbating inequalities. Food banks play a crucial role in reducing inequalities by providing food assistance to those in need. Ensuring that the food distributed aligns with the dietary and cultural preferences of recipients.
+Partnerships for the Goals: Effective partnerships between food banks, donors, and recipients are essential for achieving the sustainability goals. It's crucial to foster dialogue and collaboration to better understand the needs and preferences of recipients. By working together, stakeholders can ensure that food assistance programs are more sustainable
+
+Most rejected food items observed are canned food items. Most frequently:
+New Potatoes
+Vegetable/Tomato/Mushroom/ Soup
+Rice Pudding/Custard
+Butter Beans/Cannelini Beans/Kidney Beans/Chickpeas/Lentils
+Peas/Mushy Peas/Sliced Carrots/Sweetcorn
+Spaghetti rings/Baked Beans
+Ratatouille
+Macaroni cheese
+Fruit cocktail/Peaches/Pineapples
+
