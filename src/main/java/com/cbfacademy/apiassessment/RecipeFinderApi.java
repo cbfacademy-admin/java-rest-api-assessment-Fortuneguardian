@@ -26,7 +26,7 @@ public class RecipeFinderApi {
 
         try (FileReader reader = new FileReader("recipes.json")) {
             // Use GSON to deserialize the JSON file into your Java objects
-            Recipes[] recipes = gson.fromJson(reader, Recipes[].class);
+            Recipe[] recipes = gson.fromJson(reader, Recipe[].class);
 
             // Process the recipes as needed
             // You can return them as JSON or perform other operations here
