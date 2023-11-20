@@ -1,6 +1,6 @@
-{
-    "recipes": [
+[
       {
+        "id": "001",
         "name": "Kettle Cooking - Oatmeal with Fruit",
         "mealType": "Breakfast",
         "cookingMethod": "Kettle",
@@ -8,6 +8,7 @@
         "instructions": "Cook oatmeal with milk in the kettle and top with canned fruit for a warm and filling breakfast."
       },
       {
+        "id": "002",
         "name": "Microwave - Rice Pudding",
         "mealType": "Breakfast",
         "cookingMethod": "Microwave",
@@ -15,6 +16,7 @@
         "instructions": "Heat rice pudding in the microwave and add a sprinkle of sugar for a sweet breakfast."
       },
       {
+        "id": "003",
         "name": "Oven - Baked Oatmeal",
         "mealType": "Breakfast",
         "cookingMethod": "Oven",
@@ -22,6 +24,7 @@
         "instructions": "Mix oats, milk, and marmalade, bake in the oven for a warm and flavorful oatmeal dish."
       },
       {
+        "id": "004",
         "name": "Stovetop - Pancakes with Fruit Topping",
         "mealType": "Breakfast",
         "cookingMethod": "Stovetop",
@@ -29,6 +32,7 @@
         "instructions": "Crush breakfast cereal, mix with milk and sugar, and cook as pancakes. Top with canned fruit."
       },
       {
+        "id": "005",
         "name": "Kettle Cooking - Fruit and Cereal Parfait",
         "mealType": "Breakfast",
         "cookingMethod": "Kettle",
@@ -36,6 +40,7 @@
         "instructions": "Layer breakfast cereal, canned fruit, and a touch of sugar in a cup for a quick parfait."
       },
       {
+        "id": "006",
         "name": "Microwave - Tuna Noodle Casserole",
         "mealType": "Lunch",
         "cookingMethod": "Microwave",
@@ -43,13 +48,15 @@
         "instructions": "Mix cooked pasta, tuna, pasta sauce, milk, and a pinch of sugar. Heat in the microwave for a creamy casserole."
       },
       {
+        "id": "007",
         "name": "Oven - Chicken Curry Bake",
         "mealType": "Lunch",
         "cookingMethod": "Oven",
         "ingredients": ["Tin Chicken Curry", "Rice", "Oil"],
         "instructions": "Layer cooked rice and chicken curry in an oven-safe dish. Bake for a comforting meal."
       },
-      {
+      { 
+        "id": "008",
         "name": "Stovetop - Tuna Noodle Stir-Fry",
         "mealType": "Lunch",
         "cookingMethod": "Stovetop",
@@ -57,6 +64,7 @@
         "instructions": "Stir-fry cooked noodles with flaked tuna in a pan with a touch of oil."
       },
       {
+        "id": "009",
         "name": "Kettle Cooking - Tomato Soup with Pasta",
         "mealType": "Lunch",
         "cookingMethod": "Kettle",
@@ -64,6 +72,7 @@
         "instructions": "Cook pasta in the kettle and add canned tomatoes for a warm tomato soup."
       },
       {
+        "id": "010",
         "name": "Microwave - Jam and Biscuit Sandwich",
         "mealType": "Lunch",
         "cookingMethod": "Microwave",
@@ -71,6 +80,7 @@
         "instructions": "Spread jam between two biscuits and microwave for a warm, sweet sandwich."
       },
       {
+        "id": "011",
         "name": "Oven - Baked Rice with Chickpeas",
         "mealType": "Dinner",
         "cookingMethod": "Oven",
@@ -78,6 +88,7 @@
         "instructions": "Bake rice and chickpeas with oil for a hearty dish."
       },
       {
+        "id": "012",
         "name": "Stovetop - Tuna and Vegetable Stir-Fry",
         "mealType": "Dinner",
         "cookingMethod": "Stovetop",
@@ -85,6 +96,7 @@
         "instructions": "Stir-fry sliced carrots, sweetcorn, and flaked tuna in a pan with a bit of oil."
       },
       {
+        "id": "013",
         "name": "Kettle Cooking - Macaroni and Cheese",
         "mealType": "Dinner",
         "cookingMethod": "Kettle",
@@ -92,6 +104,7 @@
         "instructions": "Cook macaroni and cheese in the kettle for a quick dinner."
       },
       {
+        "id": "014",
         "name": "Microwave - Pineapple Fried Rice",
         "mealType": "Dinner",
         "cookingMethod": "Microwave",
@@ -99,6 +112,7 @@
         "instructions": "Stir-fry cooked rice with canned pineapples in the microwave with a dash of oil."
       },
       {
+        "id": "015",
         "name": "Oven - Bean and Pasta Casserole",
         "mealType": "Dinner",
         "cookingMethod": "Oven",
@@ -106,6 +120,7 @@
         "instructions": "Mix cooked pasta, canned beans, pasta sauce, and a touch of oil. Bake for a filling casserole."
       },
       {
+        "id": "016",
         "name": "Kettle Cooking - Rice Pudding with Fruit",
         "mealType": "Dessert",
         "cookingMethod": "Kettle",
@@ -113,6 +128,7 @@
         "instructions": "Cook rice pudding in the kettle and top with canned fruit for a sweet dessert."
       },
       {
+        "id": "017",
         "name": "Microwave - Marmalade Rice Pudding",
         "mealType": "Dessert",
         "cookingMethod": "Microwave",
@@ -120,6 +136,7 @@
         "instructions": "Heat rice pudding in the microwave and drizzle with warm marmalade for a tasty dessert."
       },
       {
+        "id": "018",
         "name": "Oven - Baked Biscuit Cake",
         "mealType": "Dessert",
         "cookingMethod": "Oven",
@@ -127,6 +144,7 @@
         "instructions": "Crush biscuits, mix with sugar, and bake in the oven for a simple biscuit cake."
       },
       {
+        "id": "019",
         "name": "Stovetop - Fruit and Oat Pancakes",
         "mealType": "Dessert",
         "cookingMethod": "Stovetop",
@@ -134,6 +152,7 @@
         "instructions": "Make oat pancakes on the stovetop and serve with a topping of canned fruit and sugar."
       },
       {
+        "id": "020",
         "name": "Kettle Cooking - Fruit and Cereal Bars",
         "mealType": "Dessert",
         "cookingMethod": "Kettle",
@@ -141,6 +160,7 @@
         "instructions": "Mix breakfast cereal, sugar, and canned fruit. Shape into bars and cook in the kettle for a fruity dessert."
       },
       {
+        "id": "021",
         "name": "Potato and Vegetable Soup",
         "mealType": "Lunch",
         "cookingMethod": "Stovetop",
@@ -148,6 +168,7 @@
         "instructions": "Dice the new potatoes. In a pot, combine the diced potatoes and a can of vegetable, tomato, or mushroom soup. Simmer for 20 minutes until the potatoes are tender. Serve hot."
       },
       {
+        "id": "022",
         "name": "Three-Bean Salad",
         "mealType": "Lunch",
         "cookingMethod": "Stovetop",
@@ -155,6 +176,7 @@
         "instructions": "Drain and rinse the canned beans and lentils. In a bowl, combine the beans and lentils with sliced carrots and sweetcorn. Add your favorite vinaigrette or dressing for flavor."
       },
       {
+        "id": "023",
         "name": "Ratatouille with Macaroni",
         "mealType": "Dinner",
         "cookingMethod": "Oven",
@@ -162,6 +184,7 @@
         "instructions": "Heat the ratatouille. Prepare macaroni cheese. Combine the two for a hearty meal."
       },
       {
+        "id": "024",
         "name": "Nigerian Bean Stew",
         "mealType": "Cultural",
         "cookingMethod": "N/A",
@@ -169,6 +192,7 @@
         "instructions": "Prepare a Nigerian-style bean stew with kidney beans or chickpeas, sliced carrots, tomato sauce, and a touch of oil."
       },
       {
+        "id": "025",
         "name": "Vegetable Fried Rice",
         "mealType": "Cultural",
         "cookingMethod": "N/A",
@@ -176,6 +200,7 @@
         "instructions": "Make a tasty vegetable fried rice with sliced carrots, sweetcorn, and a drizzle of oil."
       },
       {
+        "id": "026",
         "name": "Nigerian Jollof Rice with Chickpeas",
         "mealType": "Cultural",
         "cookingMethod": "N/A",
@@ -183,6 +208,7 @@
         "instructions": "Cook Jollof rice with chickpeas, tomato sauce, and a touch of oil for a classic Nigerian dish."
       },
       {
+        "id": "027",
         "name": "Tuna Stew with Rice",
         "mealType": "Cultural",
         "cookingMethod": "N/A",
@@ -190,6 +216,7 @@
         "instructions": "Prepare a hearty tuna stew with rice, tomato sauce, and a hint of oil for a filling meal."
       },
       {
+        "id": "028",
         "name": "Indian Spiced Porridge",
         "mealType": "Cultural",
         "cookingMethod": "N/A",
@@ -197,6 +224,7 @@
         "instructions": "Cook oats with milk and add a pinch of sugar. Enhance the flavor with a pinch of ground cinnamon and cardamom for an Indian twist."
       },
       {
+        "id": "029",
         "name": "Tuna Curry with Rice",
         "mealType": "Cultural",
         "cookingMethod": "N/A",
@@ -204,12 +232,13 @@
         "instructions": "Make a delicious tuna curry with rice, flavored with a tadka of oil, for a satisfying Indian meal."
       },
       {
+        "id": "030",
         "name": "Indian Tomato Lentil Soup",
         "mealType": "Cultural",
         "cookingMethod": "N/A",
         "ingredients": ["Lentils", "Tin Tomatoes", "Oil"],
         "instructions": "Cook lentils and blend with canned tomatoes to create a hearty Indian-style tomato lentil soup."
       }
-    ]
-}
+]
+  
   
