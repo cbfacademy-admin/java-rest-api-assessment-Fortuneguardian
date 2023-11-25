@@ -1,118 +1,213 @@
 package com.cbfacademy.apiassessment;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.FileCopyUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 @Service
 public class RecipeService {
+    private final DataAccess dataAccess;
+
+    public RecipeService(DataAccess dataAccess) {
+        this.dataAccess = dataAccess;
+    }
 
     public ResponseEntity<String> getRecipes() {
         try {
-            ClassPathResource resource = new ClassPathResource("recipes.json");
-            InputStreamReader reader = new InputStreamReader(resource.getInputStream());
-    
+
+            List<Recipe> recipes = dataAccess.getAllRecipesFromJson();
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    
-            // Convert JSON to list of Recipe objects
-            List<Recipe> recipes = gson.fromJson(reader, new TypeToken<List<Recipe>>() {}.getType());
-    
+
             // Convert the list of recipes back to a formatted JSON string
             String formattedJson = gson.toJson(recipes);
-    
-            // Close the reader
-            reader.close();
-    
-            return new ResponseEntity<>(formattedJson, HttpStatus.OK);
+            return ExceptionHandling.handleSuccessResponse(formattedJson);
         } catch (IOException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("Error: Unable to read recipes.", HttpStatus.INTERNAL_SERVER_ERROR);
+            return ExceptionHandling.handleIOException(e);
         }
     }
-    
 
     public ResponseEntity<String> searchRecipeByName(String recipeName) {
         try {
-            // Read the existing recipes from the JSON file
+            List<Recipe> recipes = dataAccess.getAllRecipesFromJson();
             Gson gson = new Gson();
-            ClassPathResource resource = new ClassPathResource("recipes.json");
-            byte[] fileData = FileCopyUtils.copyToByteArray(resource.getInputStream());
-            String jsonData = new String(fileData);
-
-            // Convert JSON to a list of Recipe objects
-            List<Recipe> recipes = gson.fromJson(jsonData, new TypeToken<List<Recipe>>() {
-            }.getType());
 
             // Search for recipes by name
             List<Recipe> matchingRecipes = recipes.stream()
                     .filter(recipe -> recipe.getName().toLowerCase().contains(recipeName.toLowerCase()))
                     .collect(Collectors.toList());
 
-            if (!matchingRecipes.isEmpty()) {
-                // Convert the list of matching recipes to JSON string and return as
-                // ResponseEntity
-                String matchingRecipesJson = gson.toJson(matchingRecipes);
-                return new ResponseEntity<>(matchingRecipesJson, HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>("No recipes found", HttpStatus.NOT_FOUND);
-            }
+            return ExceptionHandling.handleMatchingRecipes(matchingRecipes, gson);
         } catch (IOException e) {
-            e.printStackTrace();
-            return new ResponseEntity<>("Error retrieving recipes", HttpStatus.INTERNAL_SERVER_ERROR);
+            return ExceptionHandling.handleRecipeRetrievalError(e);
         }
     }
-}
-/* 
+
     public ResponseEntity<String> searchByIngredients(List<String> ingredients) {
-        // Your implementation for searching recipes by ingredients
+        try {
+            List<Recipe> recipes = dataAccess.getAllRecipesFromJson();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            // Search for recipes by any of the provided ingredients (case insensitive)
+            List<Recipe> matchingRecipes = recipes.stream()
+                    .filter(recipe -> dataAccess.recipeContainsAnyIngredient(recipe, ingredients))
+                    .collect(Collectors.toList());
+
+            return ExceptionHandling.handleMatchingRecipes(matchingRecipes, gson);
+        } catch (IOException e) {
+            return ExceptionHandling.handleRecipeRetrievalError(e);
+        }
     }
 
     public ResponseEntity<String> searchByCategory(String mealType) {
-        // Your implementation for searching recipes by meal type
+        try {
+            List<Recipe> recipes = dataAccess.getAllRecipesFromJson();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            List<Recipe> matchingRecipes = recipes.stream()
+                    .filter(recipe -> recipe.getMealType().equalsIgnoreCase(mealType))
+                    .collect(Collectors.toList());
+
+            return ExceptionHandling.handleMatchingRecipes(matchingRecipes, gson);
+        } catch (IOException e) {
+            return ExceptionHandling.handleRecipeRetrievalError(e);
+        }
     }
 
     public ResponseEntity<String> searchByCookingMethod(String cookingMethod) {
-        // Your implementation for searching recipes by cooking method
+        try {
+            List<Recipe> recipes = dataAccess.getAllRecipesFromJson();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            List<Recipe> matchingRecipes = recipes.stream()
+                    .filter(recipe -> recipe.getCookingMethod().equalsIgnoreCase(cookingMethod))
+                    .collect(Collectors.toList());
+
+            return ExceptionHandling.handleMatchingRecipes(matchingRecipes, gson);
+        } catch (IOException e) {
+            return ExceptionHandling.handleRecipeRetrievalError(e);
+        }
     }
 
+    public ResponseEntity<String> searchRecipesByCulturalInfluence(String culturalInfluence) {
+        try {
+            List<Recipe> recipes = dataAccess.getAllRecipesFromJson();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    
+            List<Recipe> matchingSpecialRecipes = recipes.stream()
+                    .filter(recipe -> recipe instanceof SpecialRecipe &&
+                            ((SpecialRecipe) recipe).getCulturalInfluence().equalsIgnoreCase(culturalInfluence))
+                    .collect(Collectors.toList());
+    
+            return ExceptionHandling.handleMatchingRecipes(matchingSpecialRecipes, gson);
+        } catch (IOException e) {
+            return ExceptionHandling.handleRecipeRetrievalError(e);
+        }
+    }
+    
+
     public ResponseEntity<String> createRecipe(Recipe recipe) {
-        // Your implementation for creating a recipe
+        try {
+            List<Recipe> existingRecipes = dataAccess.getAllRecipesFromJson();
+
+            // Append the new recipe to the existing list
+            existingRecipes.add(recipe);
+
+            // Write the updated list back to the JSON file in the resources folder
+            dataAccess.updateJsonFile(existingRecipes);
+
+            return ExceptionHandling.handleRecipeCreatedSuccessfully();
+        } catch (Exception e) {
+            return ExceptionHandling.handleRecipeCreationError(e);
+        }
     }
 
     public ResponseEntity<String> updateRecipe(int recipeID, Recipe updatedRecipe) {
-        // Your implementation for updating a recipe
+        try {
+            List<Recipe> existingRecipes = dataAccess.getAllRecipesFromJson();
+
+            boolean recipeFound = false;
+            for (int i = 0; i < existingRecipes.size(); i++) {
+                Recipe recipe = existingRecipes.get(i);
+                if (recipe.getId() == recipeID) {
+                    recipe.setName(updatedRecipe.getName());
+                    recipe.setMealType(updatedRecipe.getMealType());
+                    recipe.setCookingMethod(updatedRecipe.getCookingMethod());
+                    recipe.setIngredients(updatedRecipe.getIngredients());
+                    recipe.setInstructions(updatedRecipe.getInstructions());
+
+                    existingRecipes.set(i, recipe);
+                    dataAccess.updateJsonFile(existingRecipes);
+                    recipeFound = true;
+                    break;
+                }
+            }
+
+            if (recipeFound) {
+                return ExceptionHandling.handleRecipeUpdatedSuccessfully();
+            } else {
+                return ExceptionHandling.handleRecipeNotFound();
+            }
+        } catch (IOException e) {
+            return ExceptionHandling.handleRecipeUpdateError(e);
+        }
     }
 
     public ResponseEntity<String> patchRecipe(int recipeID, Recipe patchedRecipe) {
-        // Your implementation for patching a recipe
+        try {
+            List<Recipe> existingRecipes = dataAccess.getAllRecipesFromJson();
+
+            for (int i = 0; i < existingRecipes.size(); i++) {
+                Recipe recipe = existingRecipes.get(i);
+                if (recipe.getId() == recipeID) {
+                    if (patchedRecipe.getName() != null) {
+                        recipe.setName(patchedRecipe.getName());
+                    }
+                    if (patchedRecipe.getMealType() != null) {
+                        recipe.setMealType(patchedRecipe.getMealType());
+                    }
+                    if (patchedRecipe.getCookingMethod() != null) {
+                        recipe.setCookingMethod(patchedRecipe.getCookingMethod());
+                    }
+                    if (patchedRecipe.getIngredients() != null) {
+                        recipe.setIngredients(patchedRecipe.getIngredients());
+                    }
+                    if (patchedRecipe.getInstructions() != null) {
+                        recipe.setInstructions(patchedRecipe.getInstructions());
+                    }
+
+                    existingRecipes.set(i, recipe);
+                    dataAccess.updateJsonFile(existingRecipes);
+                    return ExceptionHandling.handleRecipePatchedSuccessfully();
+                }
+            }
+
+            return ExceptionHandling.handleRecipeNotFound();
+        } catch (IOException e) {
+            return ExceptionHandling.handleRecipePatchError(e);
+        }
     }
 
     public ResponseEntity<String> deleteRecipeById(int recipeID) {
-        // Your implementation for deleting a recipe by ID
+        try {
+            List<Recipe> existingRecipes = dataAccess.getAllRecipesFromJson();
+
+            boolean recipeRemoved = existingRecipes.removeIf(recipe -> recipe.getId() == recipeID);
+
+            if (recipeRemoved) {
+                dataAccess.updateJsonFile(existingRecipes);
+                return ExceptionHandling.handleRecipeDeletedSuccessfully();
+            } else {
+                return ExceptionHandling.handleRecipeNotFound();
+            }
+        } catch (IOException e) {
+            return ExceptionHandling.handleRecipeDeleteError(e);
+        }
     }
 
-    // Helper methods
-    private List<Recipe> getAllRecipesFromJson() {
-        // Your implementation to fetch all recipes from JSON
-    }
-
-    private void updateJsonFile(List<Recipe> updatedRecipes) {
-        // Your implementation to update the JSON file
-    }
-
-    private boolean recipeContainsAnyIngredient(Recipe recipe, List<String> ingredients) {
-        // Your implementation to check if a recipe contains any of the provided
-        // ingredients
-    }
-}*/
+}
