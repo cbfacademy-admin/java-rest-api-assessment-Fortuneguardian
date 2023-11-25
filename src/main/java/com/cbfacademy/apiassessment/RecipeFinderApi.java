@@ -49,7 +49,7 @@ public class RecipeFinderApi {
     public ResponseEntity<String> searchByIngredients(@RequestParam("ingredient") List<String> ingredients) {
         return recipeService.searchByIngredients(ingredients);
     }
-
+    //Search recipes by meal type
     @GetMapping("/recipes/findByCategory")
     public ResponseEntity<String> searchByCategory(@RequestParam("mealType") String mealType) {
         return recipeService.searchByCategory(mealType);
