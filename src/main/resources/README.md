@@ -216,6 +216,7 @@ To use the Recipe Finder API, follow the steps below:
     DELETE /recipes/031
     ```
 
+Test using postman
 
 
 ## Contributing
