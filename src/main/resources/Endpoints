@@ -1,0 +1,39 @@
+/recipes Create Recipe - POST; Add a new recipe to the database. Recipe details incluuded in request body
+/recipes/{recipeID} Read Recipe - GET; Retrieve details of recipe. Use of recipe name/id as part of URL or request parameters
+/recipes/{recipeID} Update Recipe - PUT/PATCH; Update an existing recipe. Update the entire recipe. (PATCH update parts of recipe)
+/recipes/{recipeID} Delete Recipe - DELETE; Permanently remove recipe from database. Use of recipe name/id as part of URL or request parameters
+/recipes/search General Search - GET; Search for specific recipe in database. Can be included in URL or request parameters
+/recipes/findByIngredient Search by Ingredients - GET; Search for recipes based on specific ingredients. Ingredients included in URL or request parameters.
+/recipes/findByCategory Search by Recipe Categories - GET; Search specific recipe categories eg Dinner, Lunch. Category included in URL or request parameters
+/recipes/findByCookingMethod Search by Cooking Method - GET; Search recipes based on cooking method eg Microwave, Oven. Cooking Method included in URL or request parameters
+
+
+Error Handling
+
+Create new recipe: 
+Validation Error: Required fields are missing or invalid data.  400
+Authentication Failure: The user is not authenticated to add a new recipe. 401
+Server Error: An unexpected server error occurs. 500
+
+Read Recipe:
+Recipe Not Found: The specified recipe ID does not exist. 404
+Authentication Failure: The user is not authenticated to read a recipe. 401
+
+Update Recipe:
+Recipe Not Fond: The specified recipe ID does not exist. 404
+Authentication Failure: The user is not authenticated to update a recipe. 401
+Validation Error: Invalid data for updating the recipe. 400
+
+Delete Recipe:
+Recipe Not Found: The specified recipe ID does not exist. 404
+Authentication Failure: The user is not authenticated to delete a recipe. 401
+
+Search Recipe:
+Recipe Not Found: The specified recipe ID does not exist. 404
+Ingredient Not Found: The specified ingredient does not exist. 404
+Category Not Found: The specified category does not exist. 404
+Result Not Found: The search query did not yield matching recipes. 404
+Cooking Method Not Found: The specified cooking method does not exist. 404
+Invalid Search Criteria: The search criteria contains invalid data. 400
+Authentication Failure: The user is not authenticated to perform the search. 401
+Server Error: An unexpected server error occurs. 500
